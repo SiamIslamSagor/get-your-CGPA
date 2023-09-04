@@ -149,13 +149,24 @@ const subjectClearBtn = () => {
 
 const result = () => {
   const result = getCgpa(inputObject);
+  const grade = getGrade(result);
   const div = document.createElement("div");
   div.classList = `text-center text-4xl font-semibold`;
+  if (grade === "F") {
+    div.innerHTML = `
+  <h1 class = "mt-4">You are Fail!</h1>
+  <h2>your grade is ${grade}</h2>
+  <button class="btn btn-primary mt-4" onclick = 'subjectClearBtn()'>Clear All</button>
+  `;
+    displayResultContainer.innerHTML = ``;
+    displayResultContainer.appendChild(div);
+    return;
+  }
   div.innerHTML = `
   <h1 class = "mt-4">Congratulations!!!</h1>
   <h2>your CGPA is ${result}</h2>
-  <h2>you get ${getGrade(result)}</h2>
-  <button class="btn btn-primary" onclick = 'subjectClearBtn()'>Clear All Subject</button>
+  <h2>you get ${grade}</h2>
+  <button class="btn btn-primary mt-4" onclick = 'subjectClearBtn()'>Clear All</button>
   `;
   displayResultContainer.innerHTML = ``;
   displayResultContainer.appendChild(div);
