@@ -143,6 +143,8 @@ const log = () => {
 };
 
 const subjectClearBtn = () => {
+  inputObject = {};
+  getResultButton.setAttribute("disabled", "");
   displayResultContainer.innerHTML = ``;
   displayInfoContainer.innerHTML = ``;
 };
