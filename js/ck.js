@@ -7,7 +7,7 @@ inputObject.subctName = "45" * 1;
 // console.log(inputObject);
 //////////////////////
 
-// single subject gpa finder
+/* // single subject gpa finder
 const getResult = (Mark) => {
   let myResult = 0;
   if (Mark <= 100 && Mark >= 80) {
@@ -29,8 +29,8 @@ const getResult = (Mark) => {
     myResult = 0.0;
     return myResult;
   }
-};
-
+}; */
+/* 
 // getGpa function
 const getGpa = (AllSubjectResult) => {
   let resultArr = [];
@@ -51,7 +51,7 @@ const getGpa = (AllSubjectResult) => {
   const myGpaToToDecimal = myGpa.toFixed(2) * 1;
   console.log(myGpaToToDecimal);
   return myGpaToToDecimal;
-};
+}; */
 
 //////////////////////
 // myAllSubjectResult
@@ -64,13 +64,51 @@ const myAllSubjectResult = {
 };
 
 // myGpa
-const myGpa = getCgpa(myAllSubjectResult);
-console.log("your GPA is:", myGpa);
+// const myGpa = getCgpa(myAllSubjectResult);
+// console.log("your GPA is:", myGpa);
 
-const ck = {};
+/* const ck = {};
 // console.log(ck);
 if (ck) {
-  console.log("tr");
+  // console.log("tr");
 } else {
-  console.log("fl");
-}
+  // console.log("fl");
+} */
+
+//GET Grade
+const getGrade = (cgpaResult) => {
+  let grade = "";
+  if (cgpaResult >= 4.0) {
+    grade = "A+";
+    return grade;
+  } else if (cgpaResult >= 3.75) {
+    grade = "A";
+    return grade;
+  } else if (cgpaResult >= 3.5) {
+    grade = "A-";
+    return grade;
+  } else if (cgpaResult >= 3.25) {
+    grade = "B+";
+    return grade;
+  } else if (cgpaResult >= 3.0) {
+    grade = "B";
+    return grade;
+  } else if (cgpaResult >= 2.75) {
+    grade = "B-";
+    return grade;
+  } else if (cgpaResult >= 2.5) {
+    grade = "C+";
+    return grade;
+  } else if (cgpaResult >= 2.25) {
+    grade = "C";
+    return grade;
+  } else if (cgpaResult >= 2.0) {
+    grade = "D";
+    return grade;
+  } else if (cgpaResult >= 0.0) {
+    grade = "F";
+    return grade;
+  }
+};
+
+console.log(getGrade(3.0));

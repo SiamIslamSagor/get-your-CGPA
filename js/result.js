@@ -13,24 +13,72 @@ const savedButton = document.getElementById("saved-button");
 // single subject gpa finder
 const getResult = (Mark) => {
   let myResult = 0;
-  if (Mark <= 100 && Mark >= 80) {
+  if (Mark >= 80 && Mark <= 100) {
     myResult = 4.0;
     return myResult;
-  } else if (Mark <= 79 && Mark >= 70) {
+  } else if (Mark >= 75 && Mark <= 79) {
     myResult = 3.75;
     return myResult;
-  } else if (Mark <= 69 && Mark >= 60) {
+  } else if (Mark >= 70 && Mark <= 74) {
     myResult = 3.5;
     return myResult;
-  } else if (Mark <= 59 && Mark >= 50) {
+  } else if (Mark >= 65 && Mark <= 69) {
+    myResult = 3.25;
+    return myResult;
+  } else if (Mark >= 60 && Mark <= 64) {
     myResult = 3.0;
     return myResult;
-  } else if (Mark <= 49 && Mark >= 36) {
+  } else if (Mark >= 55 && Mark <= 59) {
+    myResult = 2.75;
+    return myResult;
+  } else if (Mark >= 50 && Mark <= 54) {
+    myResult = 2.5;
+    return myResult;
+  } else if (Mark >= 45 && Mark <= 49) {
+    myResult = 2.25;
+    return myResult;
+  } else if (Mark >= 40 && Mark <= 44) {
     myResult = 2.0;
     return myResult;
-  } else if (Mark <= 35 && Mark >= 0) {
+  } else if (Mark >= 0 && Mark <= 39) {
     myResult = 0.0;
     return myResult;
+  }
+};
+
+//GET Grade
+const getGrade = (cgpaResult) => {
+  let grade = "";
+  if (cgpaResult >= 4.0) {
+    grade = "A+";
+    return grade;
+  } else if (cgpaResult >= 3.75) {
+    grade = "A";
+    return grade;
+  } else if (cgpaResult >= 3.5) {
+    grade = "A-";
+    return grade;
+  } else if (cgpaResult >= 3.25) {
+    grade = "B+";
+    return grade;
+  } else if (cgpaResult >= 3.0) {
+    grade = "B";
+    return grade;
+  } else if (cgpaResult >= 2.75) {
+    grade = "B-";
+    return grade;
+  } else if (cgpaResult >= 2.5) {
+    grade = "C+";
+    return grade;
+  } else if (cgpaResult >= 2.25) {
+    grade = "C";
+    return grade;
+  } else if (cgpaResult >= 2.0) {
+    grade = "D";
+    return grade;
+  } else if (cgpaResult >= 0.0) {
+    grade = "F";
+    return grade;
   }
 };
 
@@ -45,7 +93,9 @@ const getCgpa = (AllSubjectResult) => {
   }
 
   resultArr.forEach((singleSubjectResult) => {
-    let singleSubjectGCgpa;
+    // let singleSubjectGCgpa;
+    let singleSubjectCgpa = getResult(singleSubjectResult);
+    cgpaSum += singleSubjectCgpa;
   });
 
   const totalSubject = Object.keys(AllSubjectResult).length;
@@ -104,6 +154,7 @@ const result = () => {
   div.innerHTML = `
   <h1 class = "mt-4">Congratulations!!!</h1>
   <h2>your CGPA is ${result}</h2>
+  <h2>you get ${getGrade(result)}</h2>
   <button class="btn btn-primary" onclick = 'subjectClearBtn()'>Clear All Subject</button>
   `;
   displayResultContainer.innerHTML = ``;
